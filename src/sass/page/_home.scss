@@ -1,0 +1,19 @@
+.ex-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20rem;
+
+  &__item {
+    border: 1px solid #ccc;
+    width: 20%;
+    text-align: center;
+    cursor: pointer;
+
+    a {
+      display: block;
+      padding: 3rem 0.5rem;
+    }
+  }
+}
