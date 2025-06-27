@@ -1,0 +1,210 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1.6rem;
+}
+
+.live-code {
+  min-height: 776px;
+  background-color: #333;
+  display: flex;
+}
+.live-code__item {
+  flex: 1 1 50%;
+  border: 1px solid #ccc;
+}
+.live-code .code-context__input {
+  width: 100%;
+  height: 100%;
+  font-family: monospace;
+  background-color: #333;
+  color: #fff;
+  outline: none;
+  resize: none;
+}
+.live-code .code-transfer__output {
+  color: #fff;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.context-menu {
+  position: fixed;
+  width: 200px;
+  background-color: #fff;
+}
+.context-menu__item {
+  padding: 10px;
+  border: 1px solid #ccc;
+  transition-property: background-color, color;
+  transition: 0.3s ease-in-out;
+}
+.context-menu__item:hover {
+  background-color: rgba(59, 59, 59, 0.662745098);
+  color: #fff;
+  cursor: pointer;
+}
+
+.card-container {
+  width: 100%;
+  height: 84.4rem;
+  min-height: 84.4rem;
+  background-color: #060606;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.card-container__item {
+  width: 90%;
+  height: 70%;
+  position: absolute;
+  top: 70px;
+}
+
+/*# sourceMappingURL=main.css.map */

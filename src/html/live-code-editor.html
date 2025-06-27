@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/theme/material.min.css"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+  </head>
+  <body>
+    <div class="live-code">
+      <div class="live-code__item code-context">
+        <textarea
+          class="code-context__input"
+          name=""
+          id="code-input"
+        ></textarea>
+      </div>
+
+      <div class="live-code__item code-transfer">
+        <iframe id="code-output" class="code-transfer__output" src=""></iframe>
+      </div>
+    </div>
+
+    <ul id="context-menu" class="context-menu" hidden>
+      <li id="copy" class="context-menu__item">Copy</li>
+      <li id="delete" class="context-menu__item">Delete</li>
+    </ul>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/css/css.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="../js/live-code-editor.js"></script>
+  </body>
+</html>

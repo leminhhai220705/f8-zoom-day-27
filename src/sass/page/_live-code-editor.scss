@@ -1,0 +1,52 @@
+.live-code {
+  min-height: 776px;
+  background-color: #333;
+  display: flex;
+
+  &__item {
+    flex: 1 1 50%;
+    border: 1px solid #ccc;
+  }
+
+  .code-context {
+    &__input {
+      width: 100%;
+      height: 100%;
+      font-family: monospace;
+      background-color: #333;
+      color: #fff;
+      outline: none;
+      resize: none;
+    }
+  }
+
+  .code-transfer {
+    &__output {
+      color: #fff;
+      background-color: #fff;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.context-menu {
+  position: fixed;
+  //   top: 200px;
+  //   left: 50px;
+  width: 200px;
+  background-color: #fff;
+
+  &__item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    transition-property: background-color, color;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #3b3b3ba9;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}
