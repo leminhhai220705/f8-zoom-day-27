@@ -46,67 +46,92 @@ function CardSurf(selector, options = {}) {
 
     let startPositionX = 0;
     let startPositionY = 0;
+
+    const updateItem = (per, duration) => {
+      this.currentItem.style.transition = `transform ${duration}ms ease-out`;
+      this.currentItem.style.transform = `translateX(${per}%)`;
+
+      setTimeout(() => {
+        players.pop();
+        this.currentIndex = Math.max(0, players.length - 1); // 6 5 4
+        this.currentPlayer = players[this.currentIndex];
+        this.isAnimating = false;
+        this.currentItem.remove();
+      }, duration);
+    };
+
     if (this.opt.assistance.includes("mobile")) {
       this.isAnimating = false;
       this.startMobile = () => {
         this.container.ontouchstart = (e) => {
-          if (this.isAnimating) return;
+          startPositionX = e.touches[0].clientX;
+          startPositionY = e.touches[0].clientY;
 
+          if (this.isAnimating) return;
           if (players.length) {
             this.currentItem = this.container.querySelector(
               `[data-id="${this.currentPlayer.id}"]`,
             );
 
-            startPositionX = e.touches[0].clientX;
-            startPositionY = e.touches[0].clientY;
+            console.log("startPosX: ", startPositionX);
           }
         };
 
         this.container.ontouchend = (e) => {
-          if (isMoving) {
+          if (!this.isAnimating) {
             this.isAnimating = true;
-            if (e.changedTouches[0].clientX < 70) {
-              this.currentItem.style.transition = `transform 0.3s ease-out`;
-              this.currentItem.style.transform = "translateX(-100%)";
-              players.pop();
-              this.currentIndex = players.length - 1;
-              this.currentPlayer = players[this.currentIndex];
-              setTimeout(() => {
-                this.isAnimating = false;
-                this.currentItem.remove();
-              }, 300);
-            } else if (e.changedTouches[0].clientX > 200) {
-              this.currentItem.style.transition = `transform 0.3s ease-out`;
-              this.currentItem.style.transform = "translateX(100%)";
-              players.pop();
-              this.currentIndex = players.length - 1;
-              this.currentPlayer = players[this.currentIndex];
-              setTimeout(() => {
-                this.isAnimating = false;
-                this.currentItem.remove();
-              }, 300);
+            if (this.distanceX < -100) {
+              updateItem(-100, 250);
+            } else if (this.distanceX > 100) {
+              updateItem(100, 250);
             } else {
-              this.currentItem.style.transition = `transform 0.3s ease-out, 0.3s ease-out`;
-              this.currentItem.style.translate = `none`;
-              this.currentItem.style.transform = "none";
+              this.currentItem.style.transition = `transform 0.5s ease-out, translate 0.3s ease-out`;
+              this.currentItem.style.translate = ``;
+              this.currentItem.style.transform = "";
+              this.isAnimating = false;
             }
           }
 
           isMoving = false;
         };
 
-        this.container.ontouchmove = (e) => {
-          isMoving = true;
-          e.preventDefault();
-          if (players.length) {
-            this.distanceX = e.touches[0].clientX - startPositionX;
-            this.distanceY = e.touches[0].clientY - startPositionY;
-            this.currentItem.style.translate = `${this.distanceX}px ${this.distanceY}px`;
-            this.currentItem.style.transform = `rotate(${
-              this.distanceX / 30
-            }deg) `;
-          }
-        };
+        this.container.addEventListener(
+          "touchmove",
+          (e) => {
+            e.preventDefault();
+            if (this.isAnimating) return;
+
+            this.currentItem.style.transition = "";
+            isMoving = true;
+
+            if (players.length) {
+              this.distanceX = e.touches[0].clientX - startPositionX; //  - 357
+              this.distanceY = e.touches[0].clientY - startPositionY;
+              this.currentItem.style.translate = `${this.distanceX}px ${this.distanceY}px`;
+              this.currentItem.style.transform = `rotate(${
+                this.distanceX / 30
+              }deg) `;
+
+              if (this.distanceX < -30) {
+                this.currentItem.style.boxShadow =
+                  "0 0 30px rgba(255, 0, 0, 0.4)";
+                this.currentItem.style.border =
+                  "2px solid rgba(255, 0, 0, 0.5)";
+              } else if (this.distanceX > 30) {
+                this.currentItem.style.boxShadow =
+                  "0 0 30px rgba(0, 255, 0, 0.4)";
+                this.currentItem.style.border =
+                  "2px solid rgba(0, 255, 0, 0.5)";
+              } else {
+                this.currentItem.style.boxShadow = "none";
+                this.currentItem.style.border = "none";
+              }
+            }
+          },
+          {
+            passive: false,
+          },
+        );
       };
 
       this.startMobile();
